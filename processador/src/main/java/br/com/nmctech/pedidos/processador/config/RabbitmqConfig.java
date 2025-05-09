@@ -31,13 +31,13 @@ public class RabbitmqConfig {
     }
 
     @Bean
-    public Queue processadorQueue(){
+    public Queue notificacaoQueue(){
         return new Queue(queueName);
     }
 
     @Bean
     public Binding binding(){
-        return BindingBuilder.bind(processadorQueue()).to(pedidosExchange());
+        return BindingBuilder.bind(notificacaoQueue()).to(pedidosExchange());
     }
 
     @Bean

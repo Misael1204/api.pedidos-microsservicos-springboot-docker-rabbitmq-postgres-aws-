@@ -1,9 +1,6 @@
 package br.com.nmctech.pedidos.processador.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.Objects;
@@ -24,6 +21,7 @@ public class ItemPedido {
     private Integer quantidade;
 
     @ManyToOne
+    @JoinColumn(name = "pedido_id")
     private Pedido pedido;
 
     public ItemPedido() {
@@ -38,6 +36,14 @@ public class ItemPedido {
     public ItemPedido(Produto produto, Integer quantidade) {
         this.produto = produto;
         this.quantidade = quantidade;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 
     public UUID getId() {
